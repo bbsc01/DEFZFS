@@ -1,0 +1,13 @@
+//DEFZFS   JOB (xxxxxxxx),'REST AUTO DSETS',MSGCLASS=H,REGION=4         
+//         CLASS=A,NOTIFY=&SYSUID                                        
+//DEFINE EXEC PGM=IDCAMS,REGION=0M                                       
+//SYSPRINT DD SYSOUT=*                                                  
+//SYSIN DD *                                                            
+  DEFINE CLUSTER (NAME(OMVS.&TSID.PRDS.ZFS) -                            
+    LINEAR CYL(5 1) SHAREOPTIONS(3))                                     
+/*                                                                      
+//FORMAT EXEC PGM=IOEAGFMT,REGION=0M,COND=(0,NE),                       
+// PARM=('-AGGREGATE OMVS.&TSID.PRDS.ZFS')                              
+//SYSPRINT DD SYSOUT=*                                                   
+//STDOUT DD SYSOUT=*                                                     
+//STDERR DD SYSOUT=*                                                     
